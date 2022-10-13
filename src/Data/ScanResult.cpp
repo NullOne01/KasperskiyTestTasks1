@@ -1,7 +1,7 @@
 #include <sstream>
 #include <iomanip>
 #include "ScanResult.h"
-#include "Utils/ChronoUtils.h"
+#include "../Utils/ChronoUtils.h"
 
 ScanResult::ScanResult() {}
 
@@ -19,4 +19,7 @@ ScanResult::operator std::string() const {
                               << std::setw(2) << secs << ":"
                               << std::setw(5) << ms << "\n";
     return out.str();
+}
+void ScanResult::setExecutionTime(const std::chrono::microseconds &execution_time) {
+    ScanResult::execution_time = execution_time;
 }

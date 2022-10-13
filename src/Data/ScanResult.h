@@ -13,12 +13,12 @@ private:
     int errors_num = 0;
     std::chrono::microseconds execution_time{0};
 
-//    std::chrono::time_point<std::chrono::system_clock> start_time = std::chrono::high_resolution_clock::now();
-
 public:
     ScanResult();
 
     operator std::string() const;
+
+    void setExecutionTime(const std::chrono::microseconds &execution_time);
 };
 
 #endif //KASPERSKIYTEST1_SRC_SCANRESULT_H_
