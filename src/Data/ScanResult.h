@@ -3,19 +3,17 @@
 
 #include <chrono>
 #include <string>
+#include <unordered_map>
 #include "ParseFileResult.h"
 
 class ScanResult {
 private:
+    std::unordered_map<ParseFileResult, int> file_res_counter;
     int processed_files_ = 0;
-    int js_detects_ = 0;
-    int unix_detects_ = 0;
-    int macos_detects_ = 0;
-    int errors_num_ = 0;
     std::chrono::microseconds execution_time_{0};
 
 public:
-    operator std::string() const;
+    operator std::string();
 
     void setExecutionTime(const std::chrono::microseconds &execution_time);
 
