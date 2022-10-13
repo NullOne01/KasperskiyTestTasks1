@@ -11,7 +11,6 @@ int main(int argc, char *argv[]) {
     MalwareScanner scanner;
     auto res = scanner.scanDirectory(std::filesystem::path(argv[1]));
 
-    readFiles(argv[1]);
-    std::cout << "Hello, World!" << std::endl;
+    std::cout << std::string(res) << std::endl;
     return 0;
 }
