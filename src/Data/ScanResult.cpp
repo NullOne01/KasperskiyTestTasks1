@@ -14,10 +14,10 @@ ScanResult::operator std::string() const {
         << "Unix detects: " << unix_detects << "\n"
         << "macOS detects: " << macos_detects << "\n"
         << "Errors:" << errors_num << "\n"
-        << "Execution time: " << std::setw(2) << hrs << ":"
-                              << std::setw(2) << mins << ":"
-                              << std::setw(2) << secs << ":"
-                              << std::setw(5) << ms << "\n";
+        << "Execution time: " << std::setw(2) << hrs.count() << ":"
+                              << std::setw(2) << mins.count() << ":"
+                              << std::setw(2) << secs.count() << ":"
+                              << std::setw(5) << ms.count() << "\n";
     return out.str();
 }
 void ScanResult::setExecutionTime(const std::chrono::microseconds &execution_time) {

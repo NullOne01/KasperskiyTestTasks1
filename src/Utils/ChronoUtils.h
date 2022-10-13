@@ -6,10 +6,10 @@ public:
     template <class Rep, std::intmax_t num, std::intmax_t denom>
     static auto chronoBurst(std::chrono::duration<Rep, std::ratio<num, denom>> d)
     {
-        const auto hrs = duration_cast<hours>(d);
-        const auto mins = duration_cast<minutes>(d - hrs);
-        const auto secs = duration_cast<seconds>(d - hrs - mins);
-        const auto ms = duration_cast<milliseconds>(d - hrs - mins - secs);
+        const auto hrs = std::chrono::duration_cast<std::chrono::hours>(d);
+        const auto mins = std::chrono::duration_cast<std::chrono::minutes>(d - hrs);
+        const auto secs = std::chrono::duration_cast<std::chrono::seconds>(d - hrs - mins);
+        const auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(d - hrs - mins - secs);
 
         return std::make_tuple(hrs, mins, secs, ms);
     }
