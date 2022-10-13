@@ -15,7 +15,7 @@ ScanResult::operator std::string() const {
         << "Execution time: " << std::setfill('0') << std::setw(2) << hrs.count() << ":"
                               << std::setw(2) << mins.count() << ":"
                               << std::setw(2) << secs.count() << ":"
-                              << std::setw(4) << ms.count() << "\n";
+                              << std::setw(3) << ms.count();
     return out.str();
 }
 
