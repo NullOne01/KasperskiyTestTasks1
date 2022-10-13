@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
 
     std::string path = argv[1];
 
-    key_t key = ftok("shared", 0);
+    key_t key = ftok("scan_service", 0);
     if (key < 0) {
         std::cout << "Can\'t generate key" << std::endl;
         return -1;
@@ -45,6 +45,7 @@ int main(int argc, char *argv[]) {
     std::cout << "Sent request" << std::endl;
 
     IPCMessageScanResult ipc_res{};
+    // Receiving message with type == your id
     if ((code = msgrcv(msg_id, &ipc_res, sizeof(IPCMessageScanResult), random_id, 0)) < 0) {
         std::cout << "Can\'t receive message from queue" << std::endl;
         perror("error");

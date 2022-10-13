@@ -7,7 +7,7 @@
 #include "Data/IPCMessageScanRequest.h"
 
 int main(int argc, char *argv[]) {
-    key_t key = ftok("shared", 0);
+    key_t key = ftok("scan_service", 0);
     if (key < 0) {
         std::cout << "Can\'t generate key" << std::endl;
         return -1;
@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
         IPCMessageScanRequest request_message{};
 
         ssize_t code;
-        // Idk why MSG_EXCEPT is not supported :/ I would use it here
+        // Receiving request messages (their type equal 1)
         if ((code = msgrcv(msg_id, &request_message, sizeof(IPCMessageScanRequest), 1, 0)) < 0) {
             std::cout << "Can\'t receive message from queue" << std::endl;
             perror("error");
