@@ -10,7 +10,8 @@ iterator = 0
 
 for i in range(clear):
     with open(f'file{iterator}_clear.txt', 'w') as f:
-        f.write('I\'m clear')
+        for j in range(10000):
+            f.write('GET OUT OF MY HEAD!')
     iterator += 1
 
 for i in range(js):
