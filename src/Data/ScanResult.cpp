@@ -27,3 +27,25 @@ void ScanResult::loadParseResult(ParseFileResult parseFileResult) {
     processed_files_++;
     file_res_counter[parseFileResult]++;
 }
+
+IPCMessageScanResult ScanResult::getResultIPC() {
+    IPCMessageScanResult result{};
+    result.processed_files = processed_files_;
+    result.js_detects = file_res_counter[ParseFileResult::MALWARE_JS];
+    result.unix_detects = file_res_counter[ParseFileResult::MALWARE_UNIX];
+    result.macos_detects = file_res_counter[ParseFileResult::MALWARE_MACOS];
+    result.error_detects = file_res_counter[ParseFileResult::ERROR];
+    result.execution_time = execution_time_.count();
+
+    return result;
+}
+
+ScanResult::ScanResult() = default;
+
+ScanResult::ScanResult(IPCMessageScanResult result) : processed_files_(result.processed_files),
+                                                      execution_time_(result.execution_time) {
+    file_res_counter[ParseFileResult::MALWARE_JS] = result.js_detects;
+    file_res_counter[ParseFileResult::MALWARE_UNIX] = result.unix_detects;
+    file_res_counter[ParseFileResult::MALWARE_MACOS] = result.macos_detects;
+    file_res_counter[ParseFileResult::ERROR] = result.error_detects;
+}

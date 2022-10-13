@@ -5,6 +5,7 @@
 #include <string>
 #include <unordered_map>
 #include "ParseFileResult.h"
+#include "IPCMessageScanResult.h"
 
 class ScanResult {
 private:
@@ -18,6 +19,12 @@ public:
     void setExecutionTime(const std::chrono::microseconds &execution_time);
 
     void loadParseResult(ParseFileResult parseFileResult);
+
+    IPCMessageScanResult getResultIPC();
+
+    ScanResult();
+
+    ScanResult(IPCMessageScanResult result);
 };
 
 #endif //KASPERSKIYTEST1_SRC_SCANRESULT_H_
