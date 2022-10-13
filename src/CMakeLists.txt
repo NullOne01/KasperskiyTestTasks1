@@ -7,4 +7,6 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../input_data/ DESTINATION ${CMAKE_RUNTIME
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(scan_util main.cpp MalwareParser.cpp MalwareParser.h MalwareScanner.cpp MalwareScanner.h Data/ScanResult.cpp Data/ScanResult.h Utils/ChronoUtils.h Data/ParseFileResult.h Data/MalwareLineDatabase.cpp Data/MalwareLineDatabase.h)
+add_executable(scan_service mainServiceApp.cpp MalwareParser.cpp MalwareParser.h MalwareScanner.cpp MalwareScanner.h Utils/ChronoUtils.h Data/ScanResult.cpp Data/ScanResult.h Data/ParseFileResult.h Data/MalwareLineDatabase.cpp Data/MalwareLineDatabase.h Data/IPCMessageScanRequest.h Data/IPCMessageScanResult.h)
+
+add_executable(scan_util mainUtilApp.cpp Data/IPCMessageScanRequest.h Data/ScanResult.cpp Data/ScanResult.h)
